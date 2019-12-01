@@ -22,15 +22,8 @@ class ibpfi:
 				cont = 1
 				dev = usb.core.find(idVendor=0x5AC, idProduct=0x1281) # fill in your own device, of course
 				if dev != None:
-					dev._product = usb.util.get_string(dev, dev.iProduct)
-					if str(dev._product) != "iBPFI Pwned Device (PwnRec Mode)":
-						print("Device isnt in pwned recovery mode, continuing anyway")
-						pwn = 0
-						cont = 1
-					if str(dev._product) == "iBPFI Pwned Device (PwnRec Mode)":
-						print("Found device in pwned recovery mode")
-						pwn = 1
-						cont = 1
+					print("found device in recovery mode")
+					cont = 1
 				if cont != 0:
 					while(1):
 						cmd = raw_input("iShell: ")
